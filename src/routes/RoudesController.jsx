@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 import Home from '../routes/home/Home'
 import SinglePage from '../routes/single-page/SinglePage'
@@ -11,10 +11,15 @@ import Products from '../routes/products/Products'
 import Category from './category/Category'
 
 const RoudesController = () => {
-  const token = localStorage.getItem('token')
-
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate()
   
 
+  // useEffect(() => {
+  //   if(localStorage.getItem("token")){
+  //     navigate("/")
+  //   }
+  // }, [])
 
   return (
     <Routes>
@@ -30,7 +35,7 @@ const RoudesController = () => {
 
       <Route path='products' element={ token ? <Products /> : <Navigate to='/auth' />}/>
         
-      <Route path='category/:id' element={ token ? <Category /> : <Navigate to='/auth' />}/>
+      <Route path='category/:title' element={ token ? <Category /> : <Navigate to='/auth' />}/>
 
       <Route path='not-found' element={<NotFound />} />
       <Route path='*' element={<Navigate to='not-found' />} />

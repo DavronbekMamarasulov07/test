@@ -1,5 +1,5 @@
 import React, { memo, useMemo, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 import Container from '../../components/container/Container'
 import Nav from '../../components/nav/Nav'
@@ -9,17 +9,22 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const Category = () => {
-  const loc = useLocation()
-  const [data, loading] = useFetch(`products/${loc.pathname}`)
-  const [selectValue, setSelectValue] = useState('all')
+  const loc = useParams()
+  const [searchParam, setSearchParam] = useSearchParams()
+  const [data, loading] = useFetch(`products/category/${loc.title.split("-").join(" ")}`)
+  console.log(loc.title.split("-").join(" "))
+  const [selectValue, setSelectValue] = useState(searchParam.get('sort') || 'all')
   const sortedProducts = useMemo(() => {
-    sortProducts(data, selectValue),[selectValue]
-  })
+    sortProducts(data, selectValue)
+  },[selectValue])
 
   const handleChange = (value) => {
     setSelectValue(value)
+    searchParam.set('sort', value)
+    setSearchParam(searchParam)
   };
 
+  
 
 
   return (
@@ -28,6 +33,7 @@ const Category = () => {
       <Container>
         <Select
           placeholder="Select price"
+          defaultValue={selectValue}
           style={{
 
             width: 120,
@@ -61,7 +67,8 @@ const Category = () => {
                 </div>
               ))
               :
-              data.map(item =>
+
+              data?.map(item =>
                 <CardCategory key={uuidv4()} item={item} />
               )
           }

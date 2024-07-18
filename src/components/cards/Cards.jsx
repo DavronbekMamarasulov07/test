@@ -7,7 +7,7 @@ const Cards = () => {
     <Container>
         
         <div className='flex items-center justify-between -mt-[70px] mb-[100px]'>
-          <Link to="category/women's clothing" >
+          <Link to="category/women's-clothing" >
           <div className='flex items-center flex-col gap-4'>
             <div className='w-[300px] h-[300px] card'>
               <img  className='card__img w-full object-cover h-full' src="https://thumbs.dreamstime.com/b/gorgeous-female-brunette-model-white-clothes-portrait-posing-fashion-studio-147311462.jpg" alt="women" />
@@ -15,7 +15,7 @@ const Cards = () => {
             <h2 className=" text-center text-gray-700 text-xl font-bold  leading-[30px]">Women"s</h2>
           </div>
           </Link>
-          <Link to="category/men's clothing">
+          <Link to="category/men's-clothing">
           <div className='flex items-center flex-col gap-4 '>
             <div className='w-[300px] h-[300px] card'>
               <img  className='card__img w-full object-cover h-full' src="https://i.ebayimg.com/images/g/~lQAAOSwAp5kIYBQ/s-l1200.webp" alt="men's" />
