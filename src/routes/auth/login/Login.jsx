@@ -19,7 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
-    values.username === "admin" && values.password === "12345678" ? setInterval(() => navigate("/products"), 2000) && toast.success("Login Success")  && saveToLocalStorage("token", values) : toast.error("Login Failed");
+    values.username === "admin" && values.password === "12345678" ? setInterval(() => navigate("/"), 2000) && toast.success("Login Success")  && saveToLocalStorage("token", values) : toast.error("Login Failed");
   };
 
 
