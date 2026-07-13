@@ -1,0 +1,20 @@
+
+
+.title{
+    background-color: orange;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    position: relative;
+}
+
+.title::after{
+    content: 'cart';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: red;
+    color: white;
+    padding: 5px 15px ;
+    border-radius: 20px;
+}
